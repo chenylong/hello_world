@@ -1,0 +1,58 @@
+<web-app version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Spring MVC Application</display-name>
+
+    <servlet>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mvc-dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>
+
+
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.springapp.mvc"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>
+
+
+
+<script>
+
+//inherit()返回了一个继承自原型对象p的属性的新对象
+//这里使用ECMAScript 5中的Object.create()函数（如果存在的话）
+//如果不存在Object.create()，则退化使用其他方法
+function inherit(p){
+if(p==null)throw TypeError();//p是一个对象，但不能是null
+if(Object.create)//如果Object.create()存在
+return Object.create(p);//直接使用它
+var t=typeof p;//否则进行进一步检测
+if(t!=="object"＆＆t!=="function")throw TypeError();
+function f(){};//定义一个空构造函数
+f.prototype=p;//将其原型属性设置为p
+return new f();//使用f()创建p的继承对象
+}
+
+</script>
+
